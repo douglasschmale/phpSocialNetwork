@@ -16,6 +16,21 @@ require 'includes/form_handlers/login_handler.php';
     <script src="assets/js/register.js"></script>
 </head>
 <body>
+    <?php 
+    
+    if(isset($_POST['register_button'])){
+        echo '
+        <script>
+            $(document).ready(function() {
+                $("#first").hide();
+                $("#second").show();
+            });
+        </script>
+        ';
+    }
+
+    
+    ?>
 <div class="wrapper">
 
     <div class="login_box">
@@ -33,7 +48,7 @@ require 'includes/form_handlers/login_handler.php';
             ?>" required></br>
             <input type="password" name="log_password" placeholder="Password"><br>
             <input type="submit" name="login_button" value="Log In"><br>
-            <a href="#" id = "signup" class="signup">Need an Account?  Register Here!</a>
+            <a href="#" id = "signup" class="signup">Need an Account?  Register Here!</a><br>
             <?php 
                 if(in_array("Email or Password was incorrect<br>", $error_array))
                     echo "Email or Password was incorrect<br>";
@@ -90,7 +105,7 @@ require 'includes/form_handlers/login_handler.php';
 
             <input type="submit" name="register_button" value="Register">
             <br>
-            <a href="#" id = "signin" class="signin">Have an Account?  Sign in Here!</a>
+            <a href="#" id = "signin" class="signin">Have an Account?  Sign in Here!</a><br>
             <?php if(in_array("<span style='color: #14C800;'>You're all set! Goahead and login!</span><br>", $error_array)) echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>"; ?>
 
         </form>

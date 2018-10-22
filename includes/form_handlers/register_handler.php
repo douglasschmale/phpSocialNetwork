@@ -100,6 +100,9 @@ if(isset($_POST['register_button'])){
 
 		//Generate username by concatenating first name and last name
 		$username = strtolower($fname . "_" . $lname);
+		$username = str_ireplace("'","''", $username);
+		$qry="SELECT username FROM users WHERE username='$username'";
+		echo $qry;
 		$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
 
 
